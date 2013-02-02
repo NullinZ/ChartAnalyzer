@@ -10,7 +10,6 @@
 		BC00CAFC1632F43E005E5AF3 /* VE.m in Sources */ = {isa = PBXBuildFile; fileRef = BC00CAFB1632F43D005E5AF3 /* VE.m */; };
 		BC0B02C416A7042E00992B24 /* PatternAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0B02C316A7042E00992B24 /* PatternAnalyzer.m */; };
 		BC0B02CD16A7F18B00992B24 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCD2C3CA160DAB8A004FB740 /* Foundation.framework */; };
-		BC0B02D116A7F6E300992B24 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0B02D016A7F6E300992B24 /* RegexKitLite.m */; };
 		BC0B02D316A8124700992B24 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BC0B02D216A8124700992B24 /* libicucore.dylib */; };
 		BC0CA371163ECAA900FFB3E5 /* CurveAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0CA370163ECAA900FFB3E5 /* CurveAnalyzer.m */; };
 		BC0CA3761641946F00FFB3E5 /* BaseAnalyzer.m in Sources */ = {isa = PBXBuildFile; fileRef = BC0CA3751641946F00FFB3E5 /* BaseAnalyzer.m */; };
@@ -40,6 +39,7 @@
 		BC4098E61628159400B36CDB /* MAE.m in Sources */ = {isa = PBXBuildFile; fileRef = BC4098E51628159400B36CDB /* MAE.m */; };
 		BC57D46C161DA8D5006C0A75 /* Symbol.m in Sources */ = {isa = PBXBuildFile; fileRef = BC57D46B161DA8D4006C0A75 /* Symbol.m */; };
 		BC5814921620541A0094F894 /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = BC5814911620541A0094F894 /* refresh.png */; };
+		BC5BD4C116BD6A4400EC8E3F /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = BC5BD4C016BD6A4400EC8E3F /* RegexKitLite.m */; };
 		BC645FFF161BD4F000D22B33 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = BC645FFE161BD4F000D22B33 /* Utilities.m */; };
 		BC67BB721633DBD800BCDCCE /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE0E58E162EC28A0072ACD3 /* libz.1.2.3.dylib */; };
 		BC67BB851633DD3400BCDCCE /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67BB771633DD3400BCDCCE /* ASIInputStream.m */; };
@@ -117,8 +117,6 @@
 		BC00CAFB1632F43D005E5AF3 /* VE.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VE.m; sourceTree = "<group>"; };
 		BC0B02C216A7042E00992B24 /* PatternAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatternAnalyzer.h; sourceTree = "<group>"; };
 		BC0B02C316A7042E00992B24 /* PatternAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatternAnalyzer.m; sourceTree = "<group>"; };
-		BC0B02CF16A7F6E300992B24 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegexKitLite.h; path = "../../../Downloads/RegexKitLite-4.0/RegexKitLite.h"; sourceTree = "<group>"; };
-		BC0B02D016A7F6E300992B24 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RegexKitLite.m; path = "../../../Downloads/RegexKitLite-4.0/RegexKitLite.m"; sourceTree = "<group>"; };
 		BC0B02D216A8124700992B24 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		BC0CA36F163ECAA900FFB3E5 /* CurveAnalyzer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurveAnalyzer.h; sourceTree = "<group>"; };
 		BC0CA370163ECAA900FFB3E5 /* CurveAnalyzer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurveAnalyzer.m; sourceTree = "<group>"; };
@@ -172,6 +170,8 @@
 		BC57D46B161DA8D4006C0A75 /* Symbol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Symbol.m; sourceTree = "<group>"; };
 		BC57D472161DB22F006C0A75 /* ConstDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstDef.h; sourceTree = "<group>"; };
 		BC5814911620541A0094F894 /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		BC5BD4BF16BD6A4400EC8E3F /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		BC5BD4C016BD6A4400EC8E3F /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		BC645FFD161BD4F000D22B33 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		BC645FFE161BD4F000D22B33 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		BC67BB731633DD3400BCDCCE /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
@@ -333,8 +333,8 @@
 		BC0B02CE16A7F6C000992B24 /* Regex */ = {
 			isa = PBXGroup;
 			children = (
-				BC0B02CF16A7F6E300992B24 /* RegexKitLite.h */,
-				BC0B02D016A7F6E300992B24 /* RegexKitLite.m */,
+				BC5BD4BF16BD6A4400EC8E3F /* RegexKitLite.h */,
+				BC5BD4C016BD6A4400EC8E3F /* RegexKitLite.m */,
 			);
 			name = Regex;
 			sourceTree = "<group>";
@@ -858,8 +858,8 @@
 				BCD90CC016424FE1006FCFF6 /* TesterController.m in Sources */,
 				BC21BE2E168F563200323C08 /* RecognitionController.m in Sources */,
 				BC0B02C416A7042E00992B24 /* PatternAnalyzer.m in Sources */,
-				BC0B02D116A7F6E300992B24 /* RegexKitLite.m in Sources */,
 				BCA6B45D16AB33B500669738 /* NSMYAPPLICATION.m in Sources */,
+				BC5BD4C116BD6A4400EC8E3F /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
