@@ -253,7 +253,7 @@
 
 
 -(double)valueOfProp:(NSString*)expression{
-    expression = [expression stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    expression = [[expression stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByReplacingOccurrencesOfRegex:@"[\\[\\]]" withString:@""];
     NSArray *item = [expression componentsSeparatedByRegex:@"\\s+"];
     Candle *c;
     NSString *prop;
