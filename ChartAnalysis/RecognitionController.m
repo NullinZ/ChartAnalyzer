@@ -115,6 +115,9 @@
         [self.ve.data addObject:t];
         [t release];
     }
+    if (![[[AnalysisEngine defaultEngine] charts] containsObject:self.ve]) {
+        [[AnalysisEngine defaultEngine] addChart:self.ve];
+    }
     [resultTableView reloadData];
     [resultTableView setNeedsDisplay];
     [[AnalysisEngine defaultEngine] refreshChartViews];
