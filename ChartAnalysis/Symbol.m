@@ -9,7 +9,7 @@
 #import "Symbol.h"
 
 @implementation Symbol
-@synthesize name,count,dateSpan,importDate,loadCount;
+@synthesize name,count,dateSpan,importDate,loadCount,sourceType;
 -(NSString *)description{
     
     return [NSString stringWithFormat:@"name:%@ count:%d dateSpan:%@",name,count,dateSpan];

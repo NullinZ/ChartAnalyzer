@@ -32,4 +32,7 @@
 -(IBAction)zeroingSymbols:(id)sender;
 -(IBAction)changeFinanceType:(id)sender;
 -(IBAction)test:(id)sender;
+-(IBAction)mergeSymbols:(id)sender;
+-(IBAction)deleteSymbols:(id)sender;
+
 @end

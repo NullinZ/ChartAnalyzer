@@ -149,10 +149,60 @@
 
 }
 
+-(void)mergeSymbols:(id)sender{
+    NSIndexSet * indexSet = [tbvSymbols selectedRowIndexes];
+    if (indexSet.count <2) {
+        [NSAlert alertWithMessageText:@"请选择至少两个要合并的记录" defaultButton:@"确定" alternateButton:@"取消" otherButton:nil informativeTextWithFormat:@""];
+        return;   
+    }
+    NSMutableArray *symbolsWillMerge = [[NSMutableArray alloc] initWithCapacity:indexSet.count];
+    for (NSInteger i = [indexSet firstIndex];i != NSNotFound; i = [indexSet indexGreaterThanIndex:i]) {
+        [symbolsWillMerge addObject:[symbols objectAtIndex:i]];
+    }
+    
+    NSAlert *alert = [NSAlert alertWithMessageText:@"合并操作会删除以前的表，操作不可逆，是否继续?" defaultButton:@"确定" alternateButton:@"取消" otherButton:nil informativeTextWithFormat:@""];
+    if ([alert runModal]) {
+        DBService* db = [[DBService alloc] init];
+        NSMutableArray *result = [[NSMutableArray alloc] init];
+        Symbol *symBase,*symTmp;
+        symBase = [db getCandlesBySymbol:[symbolsWillMerge objectAtIndex:0]];
+        for (int i = 1;i < symbolsWillMerge.count;i++) {
+            
+        }     
+        [db release];
+    }
+   
+
+}
+
+-(void)deleteSymbols:(id)sender{
+    NSInteger index = [tbvSymbols selectedRow];
+    if(index < symbols.count&& index > 0){
+        Symbol *s = [symbols objectAtIndex:index];
+        if (s.name != nil) {
+            NSAlert *alert = [NSAlert alertWithMessageText:[NSString stringWithFormat:@"确认要删除%@记录?",s.name] defaultButton:@"确定" alternateButton:@"取消" otherButton:nil informativeTextWithFormat:@""];
+            if ([alert runModal]) {
+                DBService* db = [[DBService alloc] init];
+                NSLog(@"%@",s.name);
+                [db deleteSymbolByName:s.name];
+                [db dropCandleSheet:s.name];
+                [AnalysisEngine defaultEngine].symbols = [db getAllSymbols];
+                self.symbols = [AnalysisEngine defaultEngine].symbols;
+                [tbvSymbols reloadData];
+
+                [db release];
+            }
+        }
+    }
+}
+
 -(void)zeroingSymbols:(id)sender{
     DBService* db = [[DBService alloc] init];
     [db zeroingSymbols];
+    [AnalysisEngine defaultEngine].symbols = [db getAllSymbols];
+    self.symbols = [AnalysisEngine defaultEngine].symbols;
     [db release];
+    [tbvSymbols reloadData];
 
 }
 
