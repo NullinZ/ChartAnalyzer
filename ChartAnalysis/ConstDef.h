@@ -30,6 +30,10 @@
 #define CHART_CURVE 3
 #define CHART_LINE 4
 
+#define TRADING_ACTION_BUY 1
+#define TRADING_ACTION_SELL 2
+
+
 #define FILE_TYPE_MT4 @"MT4"
 #define FILE_TYPE_TS2 @"TS2"
 

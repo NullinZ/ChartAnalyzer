@@ -59,6 +59,7 @@
 - (void)dealloc
 {
     [fmt release];
+    [_curCandle release];
     [controller release];
     [super dealloc];
 }
@@ -78,6 +79,7 @@
     CGContextSetRGBFillColor(c, 1, 1, 1, 1);
     CGContextFillRect(c, [self bounds]);
     AnalysisEngine *engine = [AnalysisEngine defaultEngine];
+    //筛选时段
     if (candleNeedDraw&&engine.candles != nil&& engine.candles.count) {
         [self drawCandles:c withCandles:engine.candles];
         if (isAnchorShow) {
@@ -93,44 +95,46 @@
                 continue;
             }else if(chart.chartType == CHART_CURVE){
                 [self drawCurve:c withIndicator:chart];
-            } else if(chart.chartType == CHART_HISTOGRAM){
-                [self drawHistogram:c withIndicator:chart];
+//            } else if(chart.chartType == CHART_HISTOGRAM){
+//                [self drawHistogram:c withIndicator:chart];
             } else if(chart.chartType == CHART_LINE){
                 [self drawLine:c withIndicator:chart];
-            } else if(chart.chartType == CHART_AREA){
-                [self drawArea:c withIndicator:chart];
+//            } else if(chart.chartType == CHART_AREA){
+//                [self drawArea:c withIndicator:chart];
+            } else {
+                [chart doDraw:c withPointWidth:pointWidth rangeStart:rangeStart rangeEnd:rangeEnd rangeStartY:rangeStartY deltaY:dragDeltaX width:width height:height k:k h:h px:px];
             }
         }
     }
 }
 
 
--(void)drawHistogram:(CGContextRef)context withIndicator:(Histrogram *)indicator{
-    NSArray * indices = indicator.data;
-    if (!indices||indices.count<=0) {
-        return;
-    }
-    CGContextSetFillColorWithColor(context, indicator.color);
-    double volume;
-    int start = indicator.span?0:rangeStart;
-    int end = indicator.span?indicator.span:rangeEnd;
-    for (int i = start; i < end && i < indices.count; i++) {
-        volume = [[indices objectAtIndex:i] doubleValue];
-        int cx = (i - start) * pointWidth;
-        double cy = indicator.heightFactor * height * volume / indicator.maxHeight;
-        CGContextFillRect(context, CGRectMake(cx, 0, pointWidth - 1, cy));
-    }
-    int index = px * indicator.span/ width;
-    int key = indicator.keys&&indicator.keys.count?[[indicator.keys objectAtIndex:index] intValue]:index+1;
-    const char * tip = [[NSString stringWithFormat:@"i:%d v:%f", key, [[indices objectAtIndex:MIN(index ,indices.count-1)] doubleValue]] UTF8String];
-    CGAffineTransform xform = CGAffineTransformMake(1.0, 0.0, 0.0, 1.0, -1.0, 0.0);
-    CGContextSetTextMatrix(context, xform);
-    CGContextSelectFont(context, "Arial", 10, kCGEncodingMacRoman);
-    CGContextSetTextDrawingMode(context, kCGTextFill);
-    CGContextSetTextPosition(context, width-80, height-10);
-    CGContextShowText(context, tip, strlen(tip));
-    
-}
+//-(void)drawHistogram:(CGContextRef)context withIndicator:(Histrogram *)indicator{
+//    NSArray * indices = indicator.data;
+//    if (!indices||indices.count<=0) {
+//        return;
+//    }
+//    CGContextSetFillColorWithColor(context, indicator.color);
+//    double volume;
+//    int start = indicator.span?0:rangeStart;
+//    int end = indicator.span?indicator.span:rangeEnd;
+//    for (int i = start; i < end && i < indices.count; i++) {
+//        volume = [[indices objectAtIndex:i] doubleValue];
+//        int cx = (i - start) * pointWidth;
+//        double cy = indicator.heightFactor * height * volume / indicator.maxHeight;
+//        CGContextFillRect(context, CGRectMake(cx, 0, pointWidth - 1, cy));
+//    }
+//    int index = px * indicator.span/ width;
+//    int key = indicator.keys&&indicator.keys.count?[[indicator.keys objectAtIndex:index] intValue]:index+1;
+//    const char * tip = [[NSString stringWithFormat:@"i:%d v:%f", key, [[indices objectAtIndex:MIN(index ,indices.count-1)] doubleValue]] UTF8String];
+//    CGAffineTransform xform = CGAffineTransformMake(1.0, 0.0, 0.0, 1.0, -1.0, 0.0);
+//    CGContextSetTextMatrix(context, xform);
+//    CGContextSelectFont(context, "Arial", 10, kCGEncodingMacRoman);
+//    CGContextSetTextDrawingMode(context, kCGTextFill);
+//    CGContextSetTextPosition(context, width-80, height-10);
+//    CGContextShowText(context, tip, strlen(tip));
+//    
+//}
 //x1 index,y1 value,x2 index,y2 value
 -(void)drawLine:(CGContextRef)context withIndicator:(BaseIndicator<IIndicator> *)indicator{
     NSArray * indices = indicator.data;
@@ -153,33 +157,33 @@
     CGContextStrokePath(context);
 }
 
--(void)drawArea:(CGContextRef)context withIndicator:(VE *)indicator{
-    NSArray * indices = indicator.data;
-    if (!indices||indices.count<=0) {
-        return;
-    }
-    Trend *t;
-    int cx;
-    for (int i = 0;i < indices.count;i++) {
-        t = [indices objectAtIndex:i];
-        cx = ((indicator.fill?t.start : t.end) - rangeStart) * pointWidth + (indicator.fill?0:pointWidth);
-        switch (t.type) {
-            case RISE:
-                CGContextSetFillColorWithColor(context, indicator.riseColor);
-                break;
-            case KEEP:
-                CGContextSetFillColorWithColor(context, indicator.keepColor);
-                break;
-            case FALL:
-                CGContextSetFillColorWithColor(context, indicator.fallColor);
-                break;
-            default:
-                NSLog(@"bad trend type for setColor");
-         
-        }
-        CGContextFillRect(context, CGRectMake(cx, 0, indicator.fill?(t.span+1) * pointWidth:1, height));
-    }
-}
+//-(void)drawArea:(CGContextRef)context withIndicator:(VE *)indicator{
+//    NSArray * indices = indicator.data;
+//    if (!indices||indices.count<=0) {
+//        return;
+//    }
+//    Trend *t;
+//    int cx;
+//    for (int i = 0;i < indices.count;i++) {
+//        t = [indices objectAtIndex:i];
+//        cx = ((indicator.fill?t.start : t.end) - rangeStart) * pointWidth + (indicator.fill?0:pointWidth);
+//        switch (t.type) {
+//            case RISE:
+//                CGContextSetFillColorWithColor(context, indicator.riseColor);
+//                break;
+//            case KEEP:
+//                CGContextSetFillColorWithColor(context, indicator.keepColor);
+//                break;
+//            case FALL:
+//                CGContextSetFillColorWithColor(context, indicator.fallColor);
+//                break;
+//            default:
+//                NSLog(@"bad trend type for setColor");
+//         
+//        }
+//        CGContextFillRect(context, CGRectMake(cx, 0, indicator.fill?(t.span+1) * pointWidth:1, height));
+//    }
+//}
 
 -(void)drawCurve:(CGContextRef)context withIndicator:(BaseIndicator<IIndicator> *)indicator{
     NSArray * indices = indicator.data;

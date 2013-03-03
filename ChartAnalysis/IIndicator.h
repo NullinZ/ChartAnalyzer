@@ -13,5 +13,6 @@
 @required
 -(void)calcIndicatorWithNums:(NSArray*)numbers;
 @optional
+-(void)doDraw:(CGContextRef)context withPointWidth:(int) pointWidth rangeStart:(int)rangeStart rangeEnd:(int)rangeEnd rangeStartY:(int)rangeStartY deltaY:(int)deltaY width:(int)width height:(int)height k:(double)k h:(double)h px:(int)px;
 
 @end
