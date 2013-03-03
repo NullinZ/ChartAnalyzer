@@ -63,4 +63,5 @@
 
 -(NSDate *)lastNewsDate;
 -(NSDate *)lastDataDate;
+
 @end

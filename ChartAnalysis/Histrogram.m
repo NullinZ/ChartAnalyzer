@@ -57,6 +57,35 @@
     }
     _maxHeight = max - min;
 }
+
+-(void)doDraw:(CGContextRef)context withPointWidth:(int)pointWidth rangeStart:(int)rangeStart rangeEnd:(int)rangeEnd rangeStartY:(int)rangeStartY deltaY:(int)deltaY width:(int)width height:(int)height k:(double)k h:(double)h px:(int)px{
+    NSArray * indices = self.data;
+    if (!indices||indices.count<=0) {
+        return;
+    }
+    CGContextSetFillColorWithColor(context, self.color);
+    double volume;
+    int start = self.span?0:rangeStart;
+    int end = self.span?self.span:rangeEnd;
+    for (int i = start; i < end && i < indices.count; i++) {
+        volume = [[indices objectAtIndex:i] doubleValue];
+        int cx = (i - start) * pointWidth;
+        double cy = self.heightFactor * height * volume / self.maxHeight;
+        CGContextFillRect(context, CGRectMake(cx, 0, pointWidth - 1, cy));
+    }
+    int index = px * self.span/ width;
+    int key = self.keys&&self.keys.count?[[self.keys objectAtIndex:index] intValue]:index+1;
+    const char * tip = [[NSString stringWithFormat:@"i:%d v:%f", key, [[indices objectAtIndex:MIN(index ,indices.count-1)] doubleValue]] UTF8String];
+    CGAffineTransform xform = CGAffineTransformMake(1.0, 0.0, 0.0, 1.0, -1.0, 0.0);
+    CGContextSetTextMatrix(context, xform);
+    CGContextSelectFont(context, "Arial", 10, kCGEncodingMacRoman);
+    CGContextSetTextDrawingMode(context, kCGTextFill);
+    CGContextSetTextPosition(context, width-80, height-10);
+    CGContextShowText(context, tip, strlen(tip));
+    
+
+}
+
 -(void)dealloc{
     [keys release];
     [super dealloc];

@@ -60,6 +60,8 @@
 		BC67BBB61634584D00BCDCCE /* FunViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BC67BBB41634584D00BCDCCE /* FunViewController.m */; };
 		BC67BBB71634584D00BCDCCE /* FunViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC67BBB51634584D00BCDCCE /* FunViewController.xib */; };
 		BC67BBBE1634DF7600BCDCCE /* FunVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC67BBBD1634DF7500BCDCCE /* FunVViewController.xib */; };
+		BC787DEE16E349F500BFB3C6 /* TradingOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787DED16E349F500BFB3C6 /* TradingOrder.m */; };
+		BC787DF216E34BD900BFB3C6 /* TradingAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787DF116E34BD900BFB3C6 /* TradingAction.m */; };
 		BCA6B45D16AB33B500669738 /* NSMYAPPLICATION.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6B45C16AB33B500669738 /* NSMYAPPLICATION.m */; };
 		BCAF391616256FBA00AC401A /* AnalysisEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAF391516256FBA00AC401A /* AnalysisEngine.m */; };
 		BCCAB3E4163959B300516707 /* Trend.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCAB3E3163959B300516707 /* Trend.m */; };
@@ -214,6 +216,10 @@
 		BC67BBB41634584D00BCDCCE /* FunViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunViewController.m; sourceTree = "<group>"; };
 		BC67BBB51634584D00BCDCCE /* FunViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FunViewController.xib; sourceTree = "<group>"; };
 		BC67BBBD1634DF7500BCDCCE /* FunVViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FunVViewController.xib; sourceTree = "<group>"; };
+		BC787DEC16E349F500BFB3C6 /* TradingOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingOrder.h; sourceTree = "<group>"; };
+		BC787DED16E349F500BFB3C6 /* TradingOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingOrder.m; sourceTree = "<group>"; };
+		BC787DF016E34BD900BFB3C6 /* TradingAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingAction.h; sourceTree = "<group>"; };
+		BC787DF116E34BD900BFB3C6 /* TradingAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingAction.m; sourceTree = "<group>"; };
 		BCA6B45B16AB33B500669738 /* NSMYAPPLICATION.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMYAPPLICATION.h; sourceTree = "<group>"; };
 		BCA6B45C16AB33B500669738 /* NSMYAPPLICATION.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMYAPPLICATION.m; sourceTree = "<group>"; };
 		BCAF391416256FBA00AC401A /* AnalysisEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisEngine.h; sourceTree = "<group>"; };
@@ -377,6 +383,10 @@
 				BC57D46B161DA8D4006C0A75 /* Symbol.m */,
 				BCCAB3E2163959B300516707 /* Trend.h */,
 				BCCAB3E3163959B300516707 /* Trend.m */,
+				BC787DEC16E349F500BFB3C6 /* TradingOrder.h */,
+				BC787DED16E349F500BFB3C6 /* TradingOrder.m */,
+				BC787DF016E34BD900BFB3C6 /* TradingAction.h */,
+				BC787DF116E34BD900BFB3C6 /* TradingAction.m */,
 			);
 			name = Primitive;
 			sourceTree = "<group>";
@@ -860,6 +870,8 @@
 				BC0B02C416A7042E00992B24 /* PatternAnalyzer.m in Sources */,
 				BCA6B45D16AB33B500669738 /* NSMYAPPLICATION.m in Sources */,
 				BC5BD4C116BD6A4400EC8E3F /* RegexKitLite.m in Sources */,
+				BC787DEE16E349F500BFB3C6 /* TradingOrder.m in Sources */,
+				BC787DF216E34BD900BFB3C6 /* TradingAction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

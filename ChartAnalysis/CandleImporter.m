@@ -29,7 +29,7 @@
 -(BOOL)loadCandlesInFile:(NSString *)path withType:(NSString *)type{
     if (!path) {
         path = [[NSBundle mainBundle] pathForResource:@"test" ofType:@"txt"];
-        type = @"TS2";
+        type = FILE_TYPE_TS2;
     }
     NSError *error = [[[NSError alloc] init] autorelease];
     NSString *str = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:&error];
@@ -42,14 +42,14 @@
         return NO;
     }
     int start = 0;
-    if ([type isEqualToString:@"TS2"]) {
+    if ([type isEqualToString:FILE_TYPE_TS2]) {
         start = 1;
     }
     Candle *c = nil;
     for (int i = start; i<[candleStrs count]; i++) {
-        if ([type isEqualToString:@"MT4"]) {
+        if ([type isEqualToString:FILE_TYPE_MT4]) {
             c = [self parseCancleMT4CSV:[candleStrs objectAtIndex:i]];
-        }else if([type isEqualToString:@"TS2"]){
+        }else if([type isEqualToString:FILE_TYPE_TS2]){
             c = [self parseCancleTSCSV:[candleStrs objectAtIndex:i]];
         }
         if (c){
@@ -148,6 +148,7 @@
             Candle *cStart = [candles objectAtIndex:0];
             Candle *cEnd = [candles lastObject];
             s.dateSpan = [NSString stringWithFormat:@"%@ - %@",[dateFormatter stringFromDate:cStart.date],[dateFormatter stringFromDate:cEnd.date]];
+            s.sourceType = type;
             [db insertSymbol:s];
             [s release];
             [alert setMessageText:@"数据导入成功!"];

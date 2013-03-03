@@ -86,7 +86,7 @@
 
 -(void)insertSymbol:(Symbol *)symbol{
     if (symbol) {
-        BOOL res = [mDatabaseHandler insert:@"INSERT INTO symbols(name,import_date,count,date_span,load_count) VALUES(?,?,?,?,0)",symbol.name,symbol.importDate,[NSNumber numberWithInt:symbol.count],symbol.dateSpan];
+        BOOL res = [mDatabaseHandler insert:@"INSERT INTO symbols(name,import_date,count,date_span,load_count,source_type) VALUES(?,?,?,?,0,?)",symbol.name,symbol.importDate,[NSNumber numberWithInt:symbol.count],symbol.dateSpan, symbol.sourceType];
         NSLog(@"insert symbol %d",res);
     }
 }
@@ -104,7 +104,7 @@
 
 -(NSArray *)getAllSymbols{
     NSMutableArray *symbols = [[[NSMutableArray alloc] init] autorelease]; 
-    NSMutableArray *result =[mDatabaseHandler query:@"select * from symbols order by load_count desc"];
+    NSMutableArray *result =[mDatabaseHandler query:@"select * from symbols order by load_count,name desc"];
     for (int i = 0; i < [result count]; i++) {
         Symbol *s = [[Symbol alloc] init];
         NSDictionary *dicS = [result objectAtIndex:i];
@@ -113,6 +113,7 @@
         s.dateSpan = [dicS objectForKey:@"date_span"];
         s.count = [[dicS objectForKey:@"count"] intValue];
         s.loadCount = [[dicS objectForKey:@"load_count"] intValue];
+        s.sourceType = [dicS objectForKey:@"source_type"];
         [symbols addObject:s];
         [s release];
     }
@@ -128,7 +129,7 @@
 
 -(void)deleteSymbolByName:(NSString *)name{
     if ([mDatabaseHandler tableIsExists:TABLE_SYMBOLS] && name) {
-        [mDatabaseHandler delete:@"delete * from ? where name = '?'",TABLE_SYMBOLS,name];
+        [mDatabaseHandler delete:@"delete from symbols where name = ?",name];
     }
 }
 

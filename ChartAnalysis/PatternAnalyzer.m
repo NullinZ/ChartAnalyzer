@@ -12,10 +12,12 @@
 #define OR @"|"
 #define AND @"&"
 //status
-#define SANY @"a"
-#define SKEEP @"k"
-#define SRISE @"r"
-#define SFALL @"f"
+#define SANY @"a" //any
+#define SKEEP @"k" //keep
+#define SRISE @"r" //rise
+#define SFALL @"f" //fall
+#define SSAME @"s" //same
+#define SDIFF @"d" //diff
 //properties
 #define OPEN @"o"
 #define CLOSE @"c"
@@ -202,7 +204,12 @@
         
     }else if ([status isEqualToString:SFALL]) {
         return [candle type] == FALL;
-        
+    }else if ([status isEqualToString:SSAME]){
+        int index = MAX(pointer + offset -2, 0);
+        return [candle type] == [(Candle*)[candles objectAtIndex:index] type];
+    }else if ([status isEqualToString:SDIFF]){
+        int index = MAX(pointer + offset -2, 0);
+        return [candle type] != [(Candle*)[candles objectAtIndex:index] type];
     }else{
         @throw [NSException  exceptionWithName:@"解析状态" reason:[NSString stringWithFormat:@"line:%d error:parseExpression:断言状态符只可以为a/k/r/f\n",offset] userInfo:nil];        
     }

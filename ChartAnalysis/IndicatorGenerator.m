@@ -26,15 +26,15 @@
     if ([type isEqualToString:@"LINE"]) {
         int start = [[params objectAtIndex:0] intValue];
         int end = [[params objectAtIndex:1] intValue];
-        TrendLine * line = [[TrendLine alloc] initWithInts:data start:start end:end];
-        BaseIndicator *chart = [[[BaseIndicator alloc] initWithArray:[line calcData] type:CHART_LINE] autorelease];
+        TrendLine * line = [[TrendLine alloc] initWithStart:start end:end];
+        BaseIndicator *chart = [[[BaseIndicator alloc] init] autorelease];
         [line release];
         return chart;
     }else if([type isEqualToString:@"MVA"]){
         int peroid = [[params objectAtIndex:0] intValue];
         MVA *mva = [[MVA alloc] initWithPeroid:peroid];
         [mva calcIndicatorWithNums:data];
-        BaseIndicator *chart = [[[BaseIndicator alloc] initWithArray:data type:CHART_CURVE] autorelease];
+        BaseIndicator *chart = [[[BaseIndicator alloc] init] autorelease];
         [mva release];
         return chart;
     }else if([type isEqualToString:@"MAE"]){
