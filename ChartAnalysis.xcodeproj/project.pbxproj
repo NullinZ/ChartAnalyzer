@@ -62,6 +62,8 @@
 		BC67BBBE1634DF7600BCDCCE /* FunVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC67BBBD1634DF7500BCDCCE /* FunVViewController.xib */; };
 		BC787DEE16E349F500BFB3C6 /* TradingOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787DED16E349F500BFB3C6 /* TradingOrder.m */; };
 		BC787DF216E34BD900BFB3C6 /* TradingAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787DF116E34BD900BFB3C6 /* TradingAction.m */; };
+		BC787DFF16E362CF00BFB3C6 /* TradingBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787DFE16E362CF00BFB3C6 /* TradingBrowser.m */; };
+		BC787E0216E362DC00BFB3C6 /* Trader.m in Sources */ = {isa = PBXBuildFile; fileRef = BC787E0116E362DC00BFB3C6 /* Trader.m */; };
 		BCA6B45D16AB33B500669738 /* NSMYAPPLICATION.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA6B45C16AB33B500669738 /* NSMYAPPLICATION.m */; };
 		BCAF391616256FBA00AC401A /* AnalysisEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAF391516256FBA00AC401A /* AnalysisEngine.m */; };
 		BCCAB3E4163959B300516707 /* Trend.m in Sources */ = {isa = PBXBuildFile; fileRef = BCCAB3E3163959B300516707 /* Trend.m */; };
@@ -220,6 +222,10 @@
 		BC787DED16E349F500BFB3C6 /* TradingOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingOrder.m; sourceTree = "<group>"; };
 		BC787DF016E34BD900BFB3C6 /* TradingAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingAction.h; sourceTree = "<group>"; };
 		BC787DF116E34BD900BFB3C6 /* TradingAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingAction.m; sourceTree = "<group>"; };
+		BC787DFD16E362CF00BFB3C6 /* TradingBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TradingBrowser.h; sourceTree = "<group>"; };
+		BC787DFE16E362CF00BFB3C6 /* TradingBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TradingBrowser.m; sourceTree = "<group>"; };
+		BC787E0016E362DC00BFB3C6 /* Trader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trader.h; sourceTree = "<group>"; };
+		BC787E0116E362DC00BFB3C6 /* Trader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trader.m; sourceTree = "<group>"; };
 		BCA6B45B16AB33B500669738 /* NSMYAPPLICATION.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMYAPPLICATION.h; sourceTree = "<group>"; };
 		BCA6B45C16AB33B500669738 /* NSMYAPPLICATION.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMYAPPLICATION.m; sourceTree = "<group>"; };
 		BCAF391416256FBA00AC401A /* AnalysisEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalysisEngine.h; sourceTree = "<group>"; };
@@ -528,9 +534,21 @@
 			name = BCCollectionView;
 			sourceTree = "<group>";
 		};
+		BC787DFB16E362B600BFB3C6 /* Trader */ = {
+			isa = PBXGroup;
+			children = (
+				BC787DFD16E362CF00BFB3C6 /* TradingBrowser.h */,
+				BC787DFE16E362CF00BFB3C6 /* TradingBrowser.m */,
+				BC787E0016E362DC00BFB3C6 /* Trader.h */,
+				BC787E0116E362DC00BFB3C6 /* Trader.m */,
+			);
+			name = Trader;
+			sourceTree = "<group>";
+		};
 		BCAF391216256F4E00AC401A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				BC787DFB16E362B600BFB3C6 /* Trader */,
 				BCCAB3EA163990EC00516707 /* Importer */,
 				BCCAB3E9163990B900516707 /* Analyzer */,
 				BC4098D31627BCBF00B36CDB /* Indicator */,
@@ -872,6 +890,8 @@
 				BC5BD4C116BD6A4400EC8E3F /* RegexKitLite.m in Sources */,
 				BC787DEE16E349F500BFB3C6 /* TradingOrder.m in Sources */,
 				BC787DF216E34BD900BFB3C6 /* TradingAction.m in Sources */,
+				BC787DFF16E362CF00BFB3C6 /* TradingBrowser.m in Sources */,
+				BC787E0216E362DC00BFB3C6 /* Trader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

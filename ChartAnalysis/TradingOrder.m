@@ -8,6 +8,6 @@
 
 #import "TradingOrder.h"
 @implementation TradingOrder
-@synthesize tradingId,points,earning,interest,endAction,startAction;
+@synthesize tradingId,points,earning,interest,endAction,startAction,limit,stop;
 
 @end

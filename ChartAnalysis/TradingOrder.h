@@ -17,6 +17,8 @@
     double points;
     double earning;
     double interest;
+    double limit;
+    double stop;
 }
 @property (retain,nonatomic) TradingAction *startAction;
 @property (retain,nonatomic) TradingAction *endAction;
@@ -24,5 +26,7 @@
 @property (nonatomic) double points;
 @property (nonatomic) double earning;
 @property (nonatomic) double interest;
+@property (nonatomic) double limit;
+@property (nonatomic) double stop;
 
 @end
